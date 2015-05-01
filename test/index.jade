@@ -1,0 +1,62 @@
+doctype html
+html
+	head
+		script(src="browserfs.js")
+		script(src="NarLoader.js")
+		script(src="NanikaStorage.js")
+		script(src="NanikaStorage.backend.FS.js")
+		script(src="WorkerClient.js")
+		script(src="URLWorkerClient.js")
+		script(src="NativeShioriWorkerClient.js")
+		script(src="ShioriLoader.js")
+		script(src="KawariWorker.js")
+		script
+			:coffee
+				ShioriLoader.shiori_detectors = [
+					(fs, dirpath, shiories) ->
+						new Promise (resolve) ->
+							resolve new shiories.kawari fs
+				]
+				__window = {}
+				memfs = new BrowserFS.FileSystem.InMemory()
+				BrowserFS.initialize(memfs)
+				BrowserFS.install(__window)
+				fs = __window.require 'fs'
+				path = __window.require 'path'
+				dirpath = '/ika/ghost/tes/ghost/master/'
+				fs.mkdir 'ika'
+				fs.mkdir 'ika/ghost'
+				fs.mkdir 'ika/ghost/tes'
+				fs.mkdir 'ika/ghost/tes/ghost'
+				fs.mkdir 'ika/ghost/tes/ghost/master'
+				fs.writeFileSync path.join(dirpath, 'kawarirc.kis'), """
+				System.Callback.OnGET: aaaaaaa
+				"""
+				console.log fs.readFileSync path.join(dirpath, 'kawarirc.kis'), encoding: 'utf8'
+				ShioriLoader.detect_shiori(fs, dirpath)
+				.then (shiori) ->
+					shiori.load dirpath
+					.then (ret) ->
+						console.log ret
+					.then ->
+						shiori.request """
+						GET Version SHIORI/2.6
+						
+						
+						"""
+					.then (ret) ->
+						console.log ret
+					.then ->
+						shiori.request """
+						GET SHIORI/3.0
+						ID: OnBoot
+						
+						
+						"""
+					.then (ret) ->
+						console.log ret
+					.then ->
+						shiori.unload()
+					.then (ret) ->
+						console.log ret
+	body

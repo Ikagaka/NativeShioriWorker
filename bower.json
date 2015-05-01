@@ -1,0 +1,12 @@
+{
+	"name": "ShioriWorker",
+	"description": "ShioriWorkerClient/ShioriWorkerServer",
+	"main": ["ShioriWorkerClient.js", "ShioriWorkerServer.js"],
+	"ignore": [
+		"**/.*",
+		"bower_components",
+		"node_modules",
+		"npm-debug.log",
+		"coverage"
+	]
+}

@@ -1,0 +1,25 @@
+{
+	"name": "NativeShioriWorker",
+	"version": "0.0.1",
+	"description": "NativeShioriWorkerClient/NativeShioriWorkerServer",
+	"keywords": ["web", "worker"],
+	"main": "NativeShioriWorkerClient.js",
+	"scripts": {
+		"test": "mocha"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"coffee-script": ">= 1.9.0",
+		"codo": ""
+	},
+	"author": {
+		"name": "narazaka",
+		"url": "http://narazaka.net/"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Ikagaka/NativeShioriWorkerClient.git"
+	}
+}
