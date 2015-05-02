@@ -7,6 +7,11 @@
 		"browserfs": "",
 		"nanikastorage": "Ikagaka/NanikaStorage"
 	},
+	"exportsOverride": {
+		"encoding-japanese": {
+			"js": "encoding.min.js"
+		}
+	},
 	"ignore": [
 		"**/.*",
 		"bower_components",

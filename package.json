@@ -11,7 +11,8 @@
 	},
 	"devDependencies": {
 		"coffee-script": ">= 1.9.0",
-		"codo": ""
+		"codo": "",
+		"encoding-japanese": "polygonplanet/encoding.js#master"
 	},
 	"author": {
 		"name": "narazaka",
