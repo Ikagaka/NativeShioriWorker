@@ -14,7 +14,7 @@ emscriptenで作られたSHIORIサブシステムをWebWorkerで扱うための�
 
 NativeShioriWorkerClientは[NanikaStorage](https://github.com/Ikagaka/NanikaStorage)と[BrowserFS](https://github.com/jvilk/BrowserFS)を必要とします。
 
-NativeShioriWorkerServerは[nativeshiori](https://github.com/Narazaka/nativeshiori)と[encoding.js](https://github.com/polygonplanet/encoding.js)を必要とします。
+NativeShioriWorkerServerは[nativeshiori](https://github.com/Narazaka/nativeshiori)と[encoding-japanese](https://github.com/polygonplanet/encoding.js)を必要とします。
 
 また両方とも[WorkerClientServer](https://github.com/Narazaka/WorkerClientServer)を必要とします。
 
