@@ -2,8 +2,8 @@ NanikaStorage = @NanikaStorage
 BrowserFS = @BrowserFS
 _window = {}
 BrowserFS.install(_window)
-path = _window.require 'path'
-buffer = _window.require 'buffer'
+_path = _window.require 'path'
+_buffer = _window.require 'buffer'
 
 class NativeShioriWorkerClient
 
@@ -22,7 +22,7 @@ class NativeShioriWorkerClient
 		fs_root = result[1]
 		@dirpath = dirpath
 		@ghostpath = result[2]
-		@storage = new NanikaStorage(new NanikaStorage.Backend.FS(fs_root, @fs, path, buffer.Buffer))
+		@storage = new NanikaStorage(new NanikaStorage.Backend.FS(fs_root, @fs, _path, _buffer.Buffer))
 		@_push(dirpath)
 		.then =>
 			@_load(dirpath)
