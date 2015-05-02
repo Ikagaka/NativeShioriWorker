@@ -1,7 +1,12 @@
 {
-	"name": "ShioriWorker",
-	"description": "ShioriWorkerClient/ShioriWorkerServer",
-	"main": ["ShioriWorkerClient.js", "ShioriWorkerServer.js"],
+	"name": "NativeShioriWorker",
+	"description": "NativeShioriWorkerClient/NativeShioriWorkerServer",
+	"main": ["NativeShioriWorkerClient.js"],
+	"dependencies": {
+		"WorkerClientServer": "",
+		"browserfs": "",
+		"nanikastorage": "Ikagaka/NanikaStorage"
+	},
 	"ignore": [
 		"**/.*",
 		"bower_components",
