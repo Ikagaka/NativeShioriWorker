@@ -6,8 +6,9 @@ dep1 = fs.readFileSync process.argv[5], encoding: 'utf8'
 dep2 = fs.readFileSync process.argv[6], encoding: 'utf8'
 dep3 = fs.readFileSync process.argv[7], encoding: 'utf8'
 dep4 = fs.readFileSync process.argv[8], encoding: 'utf8'
+dep5 = fs.readFileSync process.argv[9], encoding: 'utf8'
 
-worker_code = shiori + dep1 + dep2 + dep3 + dep4 + server
+worker_code = shiori + dep1 + dep2 + dep3 + dep4 + dep5 + server
 code = 'var worker_code = "' +
 	worker_code
 	.replace(/\\/g, "\\\\")

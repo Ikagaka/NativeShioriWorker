@@ -1,6 +1,6 @@
 {
 	"name": "NativeShioriWorker",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "NativeShioriWorkerClient/NativeShioriWorkerServer",
 	"keywords": ["web", "worker"],
 	"main": "NativeShioriWorkerClient.js",

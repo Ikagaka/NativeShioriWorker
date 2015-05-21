@@ -16,7 +16,7 @@ NativeShioriWorkerClientは[NanikaStorage](https://github.com/Ikagaka/NanikaStor
 
 NativeShioriWorkerServerは[nativeshiori](https://github.com/Narazaka/nativeshiori)と[encoding-japanese](https://github.com/polygonplanet/encoding.js)を必要とします。
 
-また両方とも[WorkerClientServer](https://github.com/Narazaka/WorkerClientServer)を必要とします。
+また両方とも[WorkerClientServer](https://github.com/Narazaka/WorkerClientServer)と[bluebird](https://github.com/petkaantonov/bluebird)を必要とします。
 
 NativeShioriWorkerServerが必要とするライブラリを全てダウンロードします。
 
@@ -65,9 +65,9 @@ WebWorkerは別プロセスになるのはいいのですが、外部ファイ�
 
 nativeshiori.js, WorkerClientServer.jsをおいたディレクトリで
 
-    $ node make_worker_script.js KawariWorker-client.js KawariWorker-server.js kawari.js nativeshiori.js encoding.min.js WorkerServer.js NativeShioriWorkerServer.js > KawariWorker.js
+    $ node make_worker_script.js KawariWorker-client.js KawariWorker-server.js kawari.js nativeshiori.js encoding.min.js bluebird.js WorkerServer.js NativeShioriWorkerServer.js > KawariWorker.js
 
-クライアントスクリプト、サーバースクリプト、栞ライブラリ、nativeshiori.js、encoding.min.js、WorkerServer.js、NativeShioriWorkerServer.jsの順で引数に書いてください。
+クライアントスクリプト、サーバースクリプト、栞ライブラリ、nativeshiori.js、encoding.min.js、bluebird.js、WorkerServer.js、NativeShioriWorkerServer.jsの順で引数に書いてください。
 
 スクリプトはSTDOUTに出るので適当なファイルにリダイレクトしてください。
 
