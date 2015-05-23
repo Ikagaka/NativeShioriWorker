@@ -18,7 +18,7 @@ class NativeShioriWorkerClient
 	# @param [String] dirpath the 'ghost/master' path string that ends with path separator ('/' or '\')
 	# @return [Promise<number>] load() response code
 	load: (dirpath) ->
-		result = dirpath.match /^(.+)ghost\/([^\/]+)\/ghost\/master\/$/
+		result = dirpath.match /^(.+)ghost[\\\/]([^\/]+)[\\\/]ghost[\\\/]master[\\\/]$/
 		fs_root = result[1]
 		@dirpath = dirpath
 		@ghostpath = result[2]
