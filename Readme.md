@@ -1,7 +1,7 @@
 NativeShioriWorker - NativeShioriWorkerClient/NativeShioriWorkerServer
 ==========================
 
-emscriptenで作られたSHIORIサブシステムをWebWorkerで扱うためのライブラリ「を作るためのライブラリ」です。
+emscriptenで作られたSHIORIサブシステムをWebWorker/forkで扱うためのライブラリ「を作るためのライブラリ」です。
 
 レシピ
 --------------------------

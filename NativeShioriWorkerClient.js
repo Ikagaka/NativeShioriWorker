@@ -2,39 +2,44 @@
 (function() {
   var BrowserFS, NanikaStorage, NativeShioriWorkerClient, _buffer, _path, _window;
 
-  NanikaStorage = this.NanikaStorage;
-
-  BrowserFS = this.BrowserFS;
-
-  _window = {};
-
-  BrowserFS.install(_window);
-
-  _path = _window.require('path');
-
-  _buffer = _window.require('buffer');
+  if (typeof require !== "undefined" && require !== null) {
+    _path = require('path');
+    _buffer = require('buffer');
+  } else {
+    NanikaStorage = this.NanikaStorage;
+    BrowserFS = this.BrowserFS;
+    _window = {};
+    BrowserFS.install(_window);
+    _path = _window.require('path');
+    _buffer = _window.require('buffer');
+  }
 
   NativeShioriWorkerClient = (function() {
     NativeShioriWorkerClient.prototype.worker = function() {
       throw new Error('worker() not implemented');
     };
 
-    function NativeShioriWorkerClient(fs) {
+    function NativeShioriWorkerClient(fs, is_node_fs) {
       this.fs = fs;
+      this.is_node_fs = is_node_fs != null ? is_node_fs : typeof require !== "undefined" && require !== null;
     }
 
     NativeShioriWorkerClient.prototype.load = function(dirpath) {
       var fs_root, result;
-      result = dirpath.match(/^(.+)ghost[\\\/]([^\/]+)[\\\/]ghost[\\\/]master[\\\/]$/);
-      fs_root = result[1];
-      this.dirpath = dirpath;
-      this.ghostpath = result[2];
-      this.storage = new NanikaStorage(new NanikaStorage.Backend.FS(fs_root, this.fs, _path, _buffer.Buffer));
-      return this._push(dirpath).then((function(_this) {
-        return function() {
-          return _this._load(dirpath);
-        };
-      })(this));
+      if (this.is_node_fs) {
+        return this._load(dirpath);
+      } else {
+        result = dirpath.match(/^(.+)ghost[\\\/]([^\/]+)[\\\/]ghost[\\\/]master[\\\/]$/);
+        fs_root = result[1];
+        this.dirpath = dirpath;
+        this.ghostpath = result[2];
+        this.storage = new NanikaStorage(new NanikaStorage.Backend.FS(fs_root, this.fs, _path, _buffer.Buffer));
+        return this._push(dirpath).then((function(_this) {
+          return function() {
+            return _this._load(dirpath);
+          };
+        })(this));
+      }
     };
 
     NativeShioriWorkerClient.prototype._push = function(dirpath) {
@@ -62,15 +67,25 @@
     };
 
     NativeShioriWorkerClient.prototype.unload = function() {
-      return this._unload().then((function(_this) {
-        return function(code) {
-          return _this._pull(_this.dirpath).then(function() {
-            return _this.worker().terminate();
-          }).then(function() {
-            return code;
-          });
-        };
-      })(this));
+      if (this.is_node_fs) {
+        return this._unload().then((function(_this) {
+          return function(code) {
+            return _this.worker().terminate().then(function() {
+              return code;
+            });
+          };
+        })(this));
+      } else {
+        return this._unload().then((function(_this) {
+          return function(code) {
+            return _this._pull(_this.dirpath).then(function() {
+              return _this.worker().terminate();
+            }).then(function() {
+              return code;
+            });
+          };
+        })(this));
+      }
     };
 
     NativeShioriWorkerClient.prototype._unload = function() {
