@@ -14,7 +14,7 @@ class NativeShioriWorkerServer {
         new Promise((resolve, reject) =>
           resolve({contents: this.shiorihandler.request(request)})
         ),
-      unload: =>
+      unload: () =>
         new Promise((resolve, reject) =>
           resolve({contents: this.shiorihandler.unload()})
         ),

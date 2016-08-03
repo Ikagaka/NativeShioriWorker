@@ -3,22 +3,22 @@ var _buffer;
 var NanikaStorage;
 var BrowserFS;
 if (typeof require !== 'undefined') {
-  _path = require 'path'
-  _buffer = require 'buffer'
+  _path = require('path');
+  _buffer = require('buffer');
 } else {
-  NanikaStorage = this.NanikaStorage
-  BrowserFS = this.BrowserFS
-  const _window = {}
-  BrowserFS.install(_window)
-  _path = _window.require 'path'
-  _buffer = _window.require 'buffer'
+  NanikaStorage = this.NanikaStorage;
+  BrowserFS = this.BrowserFS;
+  const _window = {};
+  BrowserFS.install(_window);
+  _path = _window.require('path');
+  _buffer = _window.require('buffer');
 }
 
 class NativeShioriWorkerClient {
 
   // @abstract
   // @return [WorkerClient] SHIORI worker client
-  worker() { throw new Error 'worker() not implemented'; }
+  worker() { throw new Error('worker() not implemented'); }
 
   // @param [node.js/BrowserFS Filesystem] fs the filesystem
   // @param [boolean] is_node_fs if false then FS push/pull will be performed
