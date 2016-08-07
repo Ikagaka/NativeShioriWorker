@@ -20,7 +20,7 @@ function makeWorkerScript(shiori_class_name, shiori_loader_id, shiori_code, bund
       require.resolve('narloader'),
       require.resolve('nanika-storage'),
       require.resolve('nanika-storage/NanikaStorage.backend.FS'),
-      './NativeShioriWorkerClient.js',
+      require.resolve('./NativeShioriWorkerClient.js'),
     ].map((file) => fs.readFileSync(file, {encoding: 'utf8'})).join("");
   }
   const worker_code_str = catServerCode(shiori_class_name, shiori_code)
