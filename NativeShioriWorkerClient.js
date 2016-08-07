@@ -1,14 +1,15 @@
 'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var NativeShioriWorkerClient = (function () {
+var NativeShioriWorkerClient = function () {
   _createClass(NativeShioriWorkerClient, [{
     key: 'mount_point',
+
 
     // @return [string] mount point for node.js FS
     get: function get() {
@@ -50,13 +51,14 @@ var NativeShioriWorkerClient = (function () {
   // @param [String] dirpath the 'ghost/master' path string that ends with path separator ('/' or '\')
   // @return [Promise<number>] load() response code
 
+
   _createClass(NativeShioriWorkerClient, [{
     key: 'load',
     value: function load(dirpath) {
       var _this = this;
 
       if (!this.fs) {
-        var _ret = (function () {
+        var _ret = function () {
           var realdirpath = NativeShioriWorkerClient.path().join(_this.mount_point, dirpath.replace(/^[^\/\\]*[\/\\]/, '/')).replace(/\\/g, '/');
           var root = dirpath.replace(/^([^\/\\]*[\/\\]).*$/, '$1');
           return {
@@ -64,7 +66,7 @@ var NativeShioriWorkerClient = (function () {
               return _this._load(realdirpath);
             })
           };
-        })();
+        }();
 
         if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
       } else {
@@ -181,7 +183,7 @@ var NativeShioriWorkerClient = (function () {
   }]);
 
   return NativeShioriWorkerClient;
-})();
+}();
 
 if (typeof module !== 'undefined') module.exports = NativeShioriWorkerClient;
 if (typeof window !== 'undefined') window.NativeShioriWorkerClient = NativeShioriWorkerClient;

@@ -10,18 +10,30 @@ function uglifyResult(code) {
   return UglifyJS.minify(code, {fromString: true}).code;
 }
 
-function makeWorkerScript(shiori_class_name, shiori_loader_id, shiori_code) {
+function makeWorkerScript(shiori_class_name, shiori_loader_id, shiori_code, bundle_all) {
+  let bundle = "";
+  if (bundle_all) {
+    bundle = [
+      require.resolve('bluebird/js/browser/bluebird'),
+      require.resolve('worker-client-server/WorkerClient'),
+      require.resolve('single-file-worker'),
+      require.resolve('narloader'),
+      require.resolve('nanika-storage'),
+      require.resolve('nanika-storage/NanikaStorage.backend.FS'),
+      './NativeShioriWorkerClient.js',
+    ].map((file) => fs.readFileSync(file, {encoding: 'utf8'})).join("");
+  }
   const worker_code_str = catServerCode(shiori_class_name, shiori_code)
     .replace(/\\/g, "\\\\")
     .replace(/"/g, "\\\"")
     .replace(/\r/g, "\\r")
     .replace(/\n/g, "\\n");
-  return babelResult(
+  return uglifyResult(bundle + babelResult(
     fs.readFileSync(require.resolve('./rc/webworker.js'), {encoding: 'utf8'})
       .replace(/SHIORI_CLASS/g, shiori_class_name)
       .replace(/SHIORI_LOADER_ID/g, shiori_loader_id)
       .replace(/WORKER_CODE/g, worker_code_str)
-  );
+  ));
 }
 
 function catServerCode(shiori_class_name, shiori_code) {

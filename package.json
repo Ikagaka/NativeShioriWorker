@@ -7,6 +7,10 @@
     "worker"
   ],
   "main": "NativeShioriWorkerClient.js",
+  "bin": [
+    "./bin/makefork.js",
+    "./bin/makewebworker.js"
+  ],
   "scripts": {
     "build": "babel src/NativeShioriWorkerClient.js -o NativeShioriWorkerClient.js",
     "pre-test": "npm run build && npm run pre-test-fork && npm run pre-test-webworker",
@@ -23,7 +27,7 @@
     "nativeshiori": "^2.2.2",
     "single-file-worker": "^1.0.0",
     "uglify-js": "^2.7.0",
-    "worker-client-server": "^0.2.3"
+    "worker-client-server": "^0.3.1"
   },
   "author": {
     "name": "narazaka",
@@ -54,8 +58,8 @@
     "karma-safari-launcher": "^1.0.0",
     "kawari.js": "^0.1.1",
     "mocha": "^3.0.1",
-    "nanika-storage": "0.0.4",
-    "narloader": "^0.7.1",
+    "nanika-storage": "^0.1.0",
+    "narloader": "^0.7.2",
     "power-assert": "^1.4.1",
     "shioriloader": "^1.0.0"
   }
