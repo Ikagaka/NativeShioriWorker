@@ -7,10 +7,10 @@
     "worker"
   ],
   "main": "NativeShioriWorkerClient.js",
-  "bin": [
-    "./bin/makefork.js",
-    "./bin/makewebworker.js"
-  ],
+  "bin": {
+    "makefork": "./bin/makefork.js",
+    "makewebworker": "./bin/makewebworker.js"
+  },
   "scripts": {
     "build": "babel src/NativeShioriWorkerClient.js -o NativeShioriWorkerClient.js",
     "pre-test": "npm run build && npm run pre-test-fork && npm run pre-test-webworker",
