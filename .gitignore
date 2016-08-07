@@ -7,9 +7,10 @@ npm-debug.log
 /doc
 /test/workers/*
 !/test/workers/generate*
-/.*
-appveyor.yml
-gulpfile.babel.js
-karma.conf.js
-webpack.config.js
-esdoc.json
+!.babelrc
+!.codeclimate.yml
+!.eslintrc.yml
+!.gitignore
+!.gitmodules
+!.npmignore
+!.travis.yml

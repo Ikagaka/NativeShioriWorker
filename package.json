@@ -1,26 +1,61 @@
 {
-	"name": "NativeShioriWorker",
-	"version": "0.0.3",
-	"description": "NativeShioriWorkerClient/NativeShioriWorkerServer",
-	"keywords": ["web", "worker"],
-	"main": "NativeShioriWorkerClient.js",
-	"scripts": {
-		"test": "mocha"
-	},
-	"dependencies": {
-	},
-	"devDependencies": {
-		"coffee-script": ">= 1.9.0",
-		"codo": "",
-		"encoding-japanese": "polygonplanet/encoding.js#master"
-	},
-	"author": {
-		"name": "narazaka",
-		"url": "http://narazaka.net/"
-	},
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Ikagaka/NativeShioriWorkerClient.git"
-	}
+  "name": "native-shiori-worker",
+  "version": "0.0.3",
+  "description": "NativeShioriWorkerClient/NativeShioriWorkerServer",
+  "keywords": [
+    "web",
+    "worker"
+  ],
+  "main": "NativeShioriWorkerClient.js",
+  "scripts": {
+    "build": "babel src/NativeShioriWorkerClient.js -o NativeShioriWorkerClient.js",
+    "pre-test": "npm run build && npm run pre-test-fork && npm run pre-test-webworker",
+    "pre-test-fork": "node --harmony test/workers/generate-fork.js",
+    "pre-test-webworker": "node --harmony test/workers/generate-webworker.js",
+    "test": "npm run pre-test && npm run test-core",
+    "test-core": "mocha && karma start --single-run"
+  },
+  "dependencies": {
+    "babel-core": "^6.13.2",
+    "babel-preset-es2015": "^6.13.2",
+    "bluebird": "^3.4.1",
+    "encoding-japanese": "^1.0.24",
+    "nativeshiori": "^2.2.2",
+    "single-file-worker": "^1.0.0",
+    "uglify-js": "^2.7.0",
+    "worker-client-server": "^0.2.3"
+  },
+  "author": {
+    "name": "narazaka",
+    "url": "http://narazaka.net/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ikagaka/NativeShioriWorkerClient.git"
+  },
+  "devDependencies": {
+    "browserfs": "^0.5.12",
+    "cp": "^0.2.0",
+    "electron-prebuilt": "^1.3.2",
+    "intelli-espower-loader": "^1.0.1",
+    "karma": "^1.1.2",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-detect-browsers": "^2.1.0",
+    "karma-electron": "^4.0.0",
+    "karma-espower-preprocessor": "^1.1.0",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-mocha": "^1.1.1",
+    "karma-mocha-own-reporter": "^1.1.2",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-safari-launcher": "^1.0.0",
+    "kawari.js": "^0.1.1",
+    "mocha": "^3.0.1",
+    "nanika-storage": "0.0.4",
+    "narloader": "^0.7.1",
+    "power-assert": "^1.4.1",
+    "shioriloader": "^1.0.0"
+  }
 }
