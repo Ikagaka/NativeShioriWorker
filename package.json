@@ -50,7 +50,7 @@
     "karma-babel-preprocessor": "^6.0.1",
     "karma-chrome-launcher": "^1.0.1",
     "karma-detect-browsers": "^2.1.0",
-    "karma-electron": "^4.0.0",
+    "karma-electron": "^6.3.0",
     "karma-espower-preprocessor": "^1.1.0",
     "karma-firefox-launcher": "^1.0.0",
     "karma-ie-launcher": "^1.0.0",
