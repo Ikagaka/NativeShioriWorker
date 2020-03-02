@@ -25,7 +25,7 @@
     "bluebird": "^3.4.1",
     "encoding-japanese": "^1.0.24",
     "nanika-storage": "^0.1.0",
-    "narloader": "^0.7.2",
+    "narloader": "^2.0.2",
     "nativeshiori": "^2.2.2",
     "single-file-worker": "^1.0.0",
     "uglify-js": "^2.7.0",
