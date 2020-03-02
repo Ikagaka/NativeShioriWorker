@@ -48,7 +48,7 @@
     "intelli-espower-loader": "^1.0.1",
     "karma": "^1.1.2",
     "karma-babel-preprocessor": "^6.0.1",
-    "karma-chrome-launcher": "^1.0.1",
+    "karma-chrome-launcher": "^3.1.0",
     "karma-detect-browsers": "^2.1.0",
     "karma-electron": "^4.0.0",
     "karma-espower-preprocessor": "^1.1.0",
