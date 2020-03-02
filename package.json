@@ -58,7 +58,7 @@
     "karma-mocha-own-reporter": "^1.1.2",
     "karma-opera-launcher": "^1.0.0",
     "karma-safari-launcher": "^1.0.0",
-    "kawari.js": "^0.1.1",
+    "kawari.js": "^0.2.0",
     "mocha": "^3.0.1",
     "power-assert": "^1.4.1",
     "shioriloader": "^1.0.0"
