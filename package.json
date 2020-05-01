@@ -17,7 +17,9 @@
     "pre-test-fork": "node --harmony test/workers/generate-fork.js",
     "pre-test-webworker": "node --harmony test/workers/generate-webworker.js",
     "test": "npm run pre-test && npm run test-core",
-    "test-core": "mocha && karma start --single-run"
+    "test-core": "mocha && karma start --single-run",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "babel-core": "^6.13.2",
@@ -29,7 +31,8 @@
     "nativeshiori": "^2.2.2",
     "single-file-worker": "^1.0.0",
     "uglify-js": "^2.7.0",
-    "worker-client-server": "^0.3.1"
+    "worker-client-server": "^0.3.1",
+    "snyk": "^1.316.1"
   },
   "author": {
     "name": "narazaka",
@@ -62,5 +65,6 @@
     "mocha": "^3.0.1",
     "power-assert": "^1.4.1",
     "shioriloader": "^1.0.0"
-  }
+  },
+  "snyk": true
 }
